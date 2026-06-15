@@ -1,7 +1,11 @@
-import React from 'react';
+import TasksPage from './pages/TasksPage';
 
 function App () {
-  return <div>App</div>;
+  return (
+    <>
+      <TasksPage />
+    </>
+  );
 }
 
 export default App;
