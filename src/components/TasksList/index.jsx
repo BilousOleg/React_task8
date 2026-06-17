@@ -5,7 +5,7 @@ function TasksList () {
   const { tasks } = useSelector(({ tasks }) => tasks);
 
   return (
-    <section>
+    <>
       {!!tasks.length && (
         <ul>
           {tasks.map(t => (
@@ -18,7 +18,7 @@ function TasksList () {
           ))}
         </ul>
       )}
-    </section>
+    </>
   );
 }
 

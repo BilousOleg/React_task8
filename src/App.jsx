@@ -1,10 +1,13 @@
-import TasksPage from './pages/TasksPage';
+import TasksPage from './pages/TodoPage';
+import styles from './App.module.sass';
 
 function App () {
   return (
-    <>
-      <TasksPage />
-    </>
+    <div className={styles.appWrapper}>
+      <main className={styles.main}>
+        <TasksPage />
+      </main>
+    </div>
   );
 }
 

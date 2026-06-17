@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import classNames from 'classnames';
 import { addTask } from '../../store/slices/tasksSlice';
 import { TASK_VALIDATION_SCHEMA } from '../../utils/validation/validationSchemas';
+import styles from './TasksForm.module.sass';
 import CONSTANTS from '../../constants';
 
 const {
@@ -26,16 +28,33 @@ function TasksForm () {
       onSubmit={handleSubmit}
       validationSchema={TASK_VALIDATION_SCHEMA}
     >
-      <Form>
-        <Field
-          name='taskText'
-          type='text'
-          placeholder='Enter your task text'
-          maxLength={MAX_LENGTH}
-          autoFocus
-        />
-        <ErrorMessage name='taskText' component='div' />
-        <button type='submit'>Add</button>
+      <Form className={styles.taskForm}>
+        <Field name='taskText'>
+          {({ field, meta }) => {
+            const inputClassNames = classNames(styles.taskInput, {
+              [styles.invalidInput]: meta.touched && meta.error,
+            });
+
+            return (
+              <input
+                type='text'
+                placeholder='Enter your task text'
+                maxLength={MAX_LENGTH}
+                autoFocus
+                {...field}
+                className={inputClassNames}
+              />
+            );
+          }}
+        </Field>
+
+        <ErrorMessage name='taskText'>
+          {msg => <div className={styles.invalidMsg}>{msg}</div>}
+        </ErrorMessage>
+
+        <button type='submit' className={styles.submitBtn}>
+          Add
+        </button>
       </Form>
     </Formik>
   );

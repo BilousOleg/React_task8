@@ -1,0 +1,32 @@
+%heading
+  font-weight: bold
+  text-align: center
+
+.todoHeading
+  @extend %heading
+  font-size: 3rem
+  
+.todoWidget
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 0.9375rem
+  width: calc(25vw + 30vh)
+  height: calc(22vw + 27vh)
+  padding: 4.6875rem 2.5rem 1.5625rem
+  border: 4px solid #0133ff
+  border-radius: 0.625rem
+  background-color: #2a2120
+  color: #FFFFFF
+  section
+    width: 100%
+  .listSection
+    overflow: auto 
+    ul
+      padding-right: 0.5rem
+      
+
+.tasksHeading
+  @extend %heading
+  margin: 0.9375rem 0
+  font-size: 2rem

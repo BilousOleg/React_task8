@@ -1,12 +1,19 @@
 import { useDispatch } from 'react-redux';
-import { deleteTask, checkTask } from '../../store/slices/tasksSlice';
+import { FaTrashAlt } from 'react-icons/fa';
+import classNames from 'classnames';
+import { deleteTask, checkTask } from '../../../store/slices/tasksSlice';
+import styles from './TasksListItem.module.sass';
 
 function TasksListItem ({ id, text, isDone }) {
   const dispatch = useDispatch();
 
+  const textClassNames = classNames(styles.taskText, {
+    [styles.isChecked]: isDone,
+  });
+
   return (
     <li>
-      <article>
+      <article className={styles.taskCard}>
         <label>
           <input
             type='checkbox'
@@ -15,15 +22,16 @@ function TasksListItem ({ id, text, isDone }) {
               dispatch(checkTask({ id, checked }));
             }}
           />
-          <span>{text}</span>
+          <span className={textClassNames}>{text}</span>
         </label>
 
         <button
+          className={styles.deleteBtn}
           onClick={() => {
             dispatch(deleteTask(id));
           }}
         >
-          Del
+          <FaTrashAlt />
         </button>
       </article>
     </li>
