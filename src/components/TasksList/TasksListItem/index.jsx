@@ -12,7 +12,7 @@ function TasksListItem ({ id, text, isDone }) {
   });
 
   return (
-    <li>
+    <li className={styles.tasksListItem}>
       <article className={styles.taskCard}>
         <label>
           <input

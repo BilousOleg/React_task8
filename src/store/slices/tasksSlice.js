@@ -2,18 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
-  tasks: [
-    {
-      id: uuidv4(),
-      taskText: 'Lorem ipsum dolor sit amet',
-      isDone: false,
-    },
-    {
-      id: uuidv4(),
-      taskText: 'Consectetur adipisicin elit',
-      isDone: false,
-    },
-  ],
+  tasks: [],
 };
 
 const tasksSlice = createSlice({
