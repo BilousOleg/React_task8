@@ -1,3 +1,5 @@
+@use './../../assets/_colors' as c
+
 %heading
   font-weight: bold
   text-align: center
@@ -15,10 +17,10 @@
   height: 72vh
   margin: 5.5rem auto 0
   padding: 4.6875rem 2.5rem 1.5625rem
-  border: 4px solid #0133ff
+  border: 4px solid c.$main-border-color
   border-radius: 0.625rem
-  background-color: #2a2120
-  color: #FFFFFF
+  background-color: c.$main-color-dark
+  color: c.$main-text-color-light
   section
     width: 100%
   .listSection

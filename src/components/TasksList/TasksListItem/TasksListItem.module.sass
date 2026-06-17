@@ -1,3 +1,5 @@
+@use './../../../assets/_colors' as c
+
 .tasksListItem + .tasksListItem
   margin-top: 1rem
   
@@ -8,22 +10,25 @@
   width: 100%
   scrollbar-gutter: stable
   padding: 0.75rem
-  border: 2px solid #FFFFFF
+  border: 2px solid c.$main-text-color-light
   border-radius: 0.5rem
   .taskText
     margin-left: 0.75rem
     font-size: 1.25rem
   .isChecked
     text-decoration: line-through 
-    color: #808080
+    color: c.$checked-color
   .deleteBtn
     padding: 0.5rem
     font-size: inherit
-    border: 2px solid #FFFFFF
+    border: 2px solid c.$main-text-color-light
     border-radius: 0.3125rem
     background-color: transparent
-    color: #dc153c
+    color: c.$additional-text-color-light
     cursor: pointer
+    &:hover
+      border-color: c.$checked-color
+      color: c.$additional-text-color-dark
     svg
       vertical-align: middle
      

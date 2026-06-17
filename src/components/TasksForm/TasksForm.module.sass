@@ -1,3 +1,5 @@
+@use './../../assets/_colors' as c
+
 %form-block
   padding: 1rem
   font: inherit
@@ -19,22 +21,26 @@
     @extend %form-block
     width: 100%
     outline: none
-    border-color: #cccccb
+    border-color: c.$additional-border-color
     transition: border-color 0.3s 
     &:focus
-      border-color: #2f60ea
+      border-color: c.$main-color-default
   .invalidInput
-    border-color: #FF0000
+    border-color: c.$invalid-color
     &:focus
-      border-color: #FF0000
+      border-color: c.$invalid-color
   .invalidMsg
     position: absolute
     bottom: 0
     top: 1rem
-    color: #FF0000
+    color: c.$invalid-color
     transform: translateY(125%)
   .submitBtn
     @extend %form-block
-    border-color: #2f60ea
-    background-color: #2f60ea
+    border-color: c.$main-color-default
+    background-color: c.$main-color-default
+    user-select: none
     cursor: pointer
+    &:hover
+      border-color: c.$hover-color-default
+      background-color: c.$hover-color-default
