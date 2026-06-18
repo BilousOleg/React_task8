@@ -20,11 +20,11 @@ const tasksSlice = createSlice({
       state.tasks = state.tasks.filter(t => t.id !== payload);
     },
     checkTask: (state, { payload: { id, checked } }) => {
-      const changeIndex = state.tasks.findIndex(t => t.id === id);
-      state.tasks[changeIndex] = {
-        ...state.tasks[changeIndex],
-        isDone: checked,
-      };
+      const task = state.tasks.find(t => t.id === id);
+
+      if (task) {
+        task.isDone = checked;
+      }
     },
   },
 });

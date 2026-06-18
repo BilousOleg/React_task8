@@ -3,13 +3,12 @@ import classNames from 'classnames';
 import { FaTrashAlt } from 'react-icons/fa';
 import { deleteTask, checkTask } from '../../../store/slices/tasksSlice';
 import styles from './TasksListItem.module.sass';
+import { formatDate } from '../../../utils/dateUtils';
 
 function TasksListItem ({ id, text, isDone, deadline, now }) {
   const dispatch = useDispatch();
 
-  const dateOfDeadline = new Date(deadline);
-
-  const isExpired = !isDone && dateOfDeadline.getTime() < now;
+  const isExpired = !isDone && deadline < now;
 
   const taskCardClassNames = classNames(styles.taskCard, {
     [styles.isExpired]: isExpired,
@@ -36,15 +35,7 @@ function TasksListItem ({ id, text, isDone, deadline, now }) {
         </label>
 
         <div className={styles.cardGroup}>
-          <span className={styles.deadline}>
-            {dateOfDeadline.toLocaleString('uk-UA', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
-          </span>
+          <span className={styles.deadline}>{formatDate(deadline)}</span>
 
           <button
             className={styles.deleteBtn}

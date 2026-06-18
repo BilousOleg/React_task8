@@ -36,7 +36,6 @@ export const getWeatherThunk = createAsyncThunk(
         windSpeed: data.current.wind_speed_10m,
       };
     } catch (error) {
-      console.dir({ message: error.message });
       return rejectWithValue({ message: error.message });
     }
   }

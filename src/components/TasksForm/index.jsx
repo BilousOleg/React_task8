@@ -21,8 +21,13 @@ const initialValues = {
 function TasksForm () {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(addTask(values));
+  const handleSubmit = ({ taskText, taskDeadline }, { resetForm }) => {
+    dispatch(
+      addTask({
+        taskText: taskText.trim(),
+        taskDeadline: new Date(taskDeadline).getTime(),
+      })
+    );
     resetForm();
   };
 
@@ -45,6 +50,7 @@ function TasksForm () {
                   type='text'
                   placeholder='Enter your task text'
                   maxLength={MAX_LENGTH}
+                  aria-label='Enter task text'
                   aria-invalid={!!(meta.touched && meta.error)}
                   aria-describedby={INVALID_TEXT}
                   autoFocus
@@ -74,6 +80,7 @@ function TasksForm () {
               return (
                 <input
                   type='datetime-local'
+                  aria-label='Enter task deadline'
                   aria-invalid={!!(meta.touched && meta.error)}
                   aria-describedby={INVALID_DEADLINE}
                   {...field}
