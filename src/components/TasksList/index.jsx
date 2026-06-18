@@ -1,8 +1,18 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TasksListItem from './TasksListItem';
 
 function TasksList () {
   const { tasks } = useSelector(({ tasks }) => tasks);
+
+  const [now, setNow] = useState(Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setNow(Date.now());
+    }, 60000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <>
@@ -15,6 +25,7 @@ function TasksList () {
               text={t.taskText}
               isDone={t.isDone}
               deadline={t.taskDeadline}
+              now={now}
             />
           ))}
         </ul>

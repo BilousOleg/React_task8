@@ -1,21 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
 import classNames from 'classnames';
+import { FaTrashAlt } from 'react-icons/fa';
 import { deleteTask, checkTask } from '../../../store/slices/tasksSlice';
 import styles from './TasksListItem.module.sass';
 
-function TasksListItem ({ id, text, isDone, deadline }) {
+function TasksListItem ({ id, text, isDone, deadline, now }) {
   const dispatch = useDispatch();
-
-  const [now, setNow] = useState(Date.now());
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setNow(Date.now());
-    }, 60000);
-    return () => clearInterval(id);
-  }, []);
 
   const dateOfDeadline = new Date(deadline);
 
