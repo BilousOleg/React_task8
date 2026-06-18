@@ -8,27 +8,48 @@
   justify-content: space-between
   align-items: center
   width: 100%
-  scrollbar-gutter: stable
   padding: 0.75rem
   border: 2px solid c.$main-text-color-light
   border-radius: 0.5rem
-  .taskText
-    margin-left: 0.75rem
-    font-size: 1.25rem
-  .isChecked
-    text-decoration: line-through 
-    color: c.$checked-color
-  .deleteBtn
-    padding: 0.5rem
-    font-size: inherit
-    border: 2px solid c.$main-text-color-light
-    border-radius: 0.3125rem
-    background-color: transparent
-    color: c.$additional-text-color-light
-    cursor: pointer
-    &:hover
-      border-color: c.$checked-color
-      color: c.$additional-text-color-dark
-    svg
-      vertical-align: middle
-     
+  label
+    flex-grow: 1
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    .taskText
+      margin-left: 0.75rem
+      font-size: 1.25rem
+    .isChecked
+      text-decoration: line-through 
+      color: c.$checked-color
+  .cardGroup
+    flex-shrink: 0
+    .deadline
+      position: relative
+      margin-right: 3rem
+    .deleteBtn
+      padding: 0.5rem
+      font-size: inherit
+      border: 2px solid c.$main-text-color-light
+      border-radius: 0.3125rem
+      background-color: transparent
+      color: c.$additional-text-color-light
+      cursor: pointer
+      &:hover
+        border-color: c.$checked-color
+        color: c.$additional-text-color-dark
+      &:active
+        border-color: c.$main-text-color-light
+        color: c.$additional-text-color-light
+      svg
+        vertical-align: middle
+.isExpired
+  border-color: c.$invalid-color
+  .deadline
+    color: c.$invalid-color
+    &::before
+      position: absolute
+      left: -0.9375rem
+      top: -0.3125rem
+      font-size: 1.5rem
+      content: '!'

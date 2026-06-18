@@ -17,24 +17,26 @@
   gap: 0.8rem
   width: 80%
   margin: 0 auto
-  .taskInput
-    @extend %form-block
-    width: 100%
-    outline: none
-    border-color: c.$additional-border-color
-    transition: border-color 0.3s 
-    &:focus
-      border-color: c.$main-color-default
-  .invalidInput
-    border-color: c.$invalid-color
-    &:focus
+  .taskLabel
+    width: 40%
+    .taskInput
+      @extend %form-block
+      width: 100%
+      outline: none
+      border-color: c.$additional-border-color
+      transition: border-color 0.3s 
+      &:focus
+        border-color: c.$main-color-default
+    .invalidInput
       border-color: c.$invalid-color
-  .invalidMsg
-    position: absolute
-    bottom: 0
-    top: 1rem
-    color: c.$invalid-color
-    transform: translateY(125%)
+      &:focus
+        border-color: c.$invalid-color
+    .invalidMsg
+      position: absolute
+      bottom: 0
+      top: 1rem
+      color: c.$invalid-color
+      transform: translateY(125%)
   .submitBtn
     @extend %form-block
     border-color: c.$main-color-default
@@ -44,3 +46,6 @@
     &:hover
       border-color: c.$hover-color-default
       background-color: c.$hover-color-default
+    &:active
+      border-color: c.$main-color-default
+      background-color: c.$main-color-default

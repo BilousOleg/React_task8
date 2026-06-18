@@ -12,6 +12,7 @@ const {
 
 const initialValues = {
   taskText: INITIAL_VALUE,
+  taskDeadline: '',
 };
 
 function TasksForm () {
@@ -29,28 +30,52 @@ function TasksForm () {
       validationSchema={TASK_VALIDATION_SCHEMA}
     >
       <Form className={styles.taskForm}>
-        <Field name='taskText'>
-          {({ field, meta }) => {
-            const inputClassNames = classNames(styles.taskInput, {
-              [styles.invalidInput]: meta.touched && meta.error,
-            });
+        <label className={styles.taskLabel}>
+          <Field name='taskText'>
+            {({ field, meta }) => {
+              const inputClassNames = classNames(styles.taskInput, {
+                [styles.invalidInput]: meta.touched && meta.error,
+              });
 
-            return (
-              <input
-                type='text'
-                placeholder='Enter your task text'
-                maxLength={MAX_LENGTH}
-                autoFocus
-                {...field}
-                className={inputClassNames}
-              />
-            );
-          }}
-        </Field>
+              return (
+                <input
+                  type='text'
+                  placeholder='Enter your task text'
+                  maxLength={MAX_LENGTH}
+                  autoFocus
+                  {...field}
+                  className={inputClassNames}
+                />
+              );
+            }}
+          </Field>
 
-        <ErrorMessage name='taskText'>
-          {msg => <div className={styles.invalidMsg}>{msg}</div>}
-        </ErrorMessage>
+          <ErrorMessage name='taskText'>
+            {msg => <div className={styles.invalidMsg}>{msg}</div>}
+          </ErrorMessage>
+        </label>
+
+        <label className={styles.taskLabel}>
+          <Field name='taskDeadline'>
+            {({ field, meta }) => {
+              const inputClassNames = classNames(styles.taskInput, {
+                [styles.invalidInput]: meta.touched && meta.error,
+              });
+
+              return (
+                <input
+                  type='datetime-local'
+                  {...field}
+                  className={inputClassNames}
+                />
+              );
+            }}
+          </Field>
+
+          <ErrorMessage name='taskDeadline'>
+            {msg => <div className={styles.invalidMsg}>{msg}</div>}
+          </ErrorMessage>
+        </label>
 
         <button type='submit' className={styles.submitBtn}>
           Add

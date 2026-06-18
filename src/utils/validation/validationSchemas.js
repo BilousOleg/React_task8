@@ -12,4 +12,12 @@ export const TASK_VALIDATION_SCHEMA = yup.object({
     .required('Task is required')
     .min(MIN_LENGTH, `Minimum ${MIN_LENGTH} characters required`)
     .max(MAX_LENGTH, `Maximum ${MAX_LENGTH} characters`),
+  taskDeadline: yup
+    .date()
+    .required('Date is required')
+    .test(
+      'futureDate',
+      'deadline cannot be in the past',
+      value => value && value.getTime() > Date.now()
+    ),
 });

@@ -14,6 +14,7 @@ function TasksList () {
               id={t.id}
               text={t.taskText}
               isDone={t.isDone}
+              deadline={t.taskDeadline}
             />
           ))}
         </ul>
