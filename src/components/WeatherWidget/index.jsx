@@ -17,7 +17,7 @@ function WeatherWidget () {
 
   useEffect(() => {
     dispatch(getWeatherThunk({ tempUnit, windSpeedUnit }));
-  }, []);
+  }, [dispatch, tempUnit, windSpeedUnit]);
 
   if (isFetching) {
     return <span>Loading...</span>;

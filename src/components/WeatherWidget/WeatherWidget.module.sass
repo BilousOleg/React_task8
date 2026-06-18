@@ -1,13 +1,15 @@
 @use './../../assets/_colors' as c
 
 .weatherList
+  display: flex
+  flex-direction: column
+  gap: clamp(0.5rem, 2.5vw, 1.75rem)
   font-size: 1.25rem
   border: 2px solid c.$main-text-color-light
   border-radius: 0.35rem
   padding: 0.5rem
+  @media screen and (min-width: 574px)
+    flex-direction: row
   li
-    display: inline-block
     span
       margin-left: 0.5rem
-    + li
-      margin-left: 1.75rem

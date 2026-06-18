@@ -5,7 +5,7 @@ import TasksListItem from './TasksListItem';
 function TasksList () {
   const { tasks } = useSelector(({ tasks }) => tasks);
 
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -14,23 +14,23 @@ function TasksList () {
     return () => clearInterval(id);
   }, []);
 
+  if (tasks.length === 0) {
+    return <div>There is no tasks yet...</div>;
+  }
+
   return (
-    <>
-      {!!tasks.length && (
-        <ul>
-          {tasks.map(t => (
-            <TasksListItem
-              key={t.id}
-              id={t.id}
-              text={t.taskText}
-              isDone={t.isDone}
-              deadline={t.taskDeadline}
-              now={now}
-            />
-          ))}
-        </ul>
-      )}
-    </>
+    <ul>
+      {tasks.map(t => (
+        <TasksListItem
+          key={t.id}
+          id={t.id}
+          text={t.taskText}
+          isDone={t.isDone}
+          deadline={t.taskDeadline}
+          now={now}
+        />
+      ))}
+    </ul>
   );
 }
 

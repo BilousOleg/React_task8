@@ -1,11 +1,7 @@
 import TodoWidget from '../../components/TodoWidget';
 
 function TasksPage () {
-  return (
-    <>
-      <TodoWidget />
-    </>
-  );
+  return <TodoWidget />;
 }
 
 export default TasksPage;

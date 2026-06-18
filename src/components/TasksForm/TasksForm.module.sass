@@ -10,15 +10,15 @@
   color: #000000
   
 .taskForm
-  position: relative
   display: flex
   justify-content: space-between
+  flex-direction: column
   align-items: center
-  gap: 0.8rem
-  width: 80%
-  margin: 0 auto
+  gap: 2rem
+  width: 100%
   .taskLabel
-    width: 40%
+    position: relative
+    width: 100%
     .taskInput
       @extend %form-block
       width: 100%
@@ -33,12 +33,12 @@
         border-color: c.$invalid-color
     .invalidMsg
       position: absolute
-      bottom: 0
-      top: 1rem
+      bottom: -0.25rem
       color: c.$invalid-color
       transform: translateY(125%)
   .submitBtn
     @extend %form-block
+    width: 100%
     border-color: c.$main-color-default
     background-color: c.$main-color-default
     user-select: none
@@ -49,3 +49,12 @@
     &:active
       border-color: c.$main-color-default
       background-color: c.$main-color-default
+
+@media screen and (min-width: 1080px)
+  .taskForm
+    flex-direction: row
+    gap: 0.8rem
+    .taskLabel
+      width: 40%
+    .submitBtn
+      width: 20%
