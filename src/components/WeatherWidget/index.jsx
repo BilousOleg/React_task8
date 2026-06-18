@@ -31,13 +31,13 @@ function WeatherWidget () {
     <article>
       <ul className={styles.weatherList}>
         <li>
-          <FaTemperatureLow />
+          <FaTemperatureLow aria-hidden='true' />
           <span>
             {temperature} {UNITS[tempUnit]}
           </span>
         </li>
         <li>
-          <FaWind />
+          <FaWind aria-hidden='true' />
           <span>
             {windSpeed} {UNITS[windSpeedUnit]}
           </span>

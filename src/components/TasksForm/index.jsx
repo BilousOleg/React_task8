@@ -7,11 +7,14 @@ import styles from './TasksForm.module.sass';
 import CONSTANTS from '../../constants';
 
 const {
-  FORM: { MAX_LENGTH, INITIAL_VALUE },
+  FORM: {
+    MAX_LENGTH,
+    ERROR_IDS: { INVALID_TEXT, INVALID_DEADLINE },
+  },
 } = CONSTANTS;
 
 const initialValues = {
-  taskText: INITIAL_VALUE,
+  taskText: '',
   taskDeadline: '',
 };
 
@@ -42,6 +45,8 @@ function TasksForm () {
                   type='text'
                   placeholder='Enter your task text'
                   maxLength={MAX_LENGTH}
+                  aria-invalid={!!(meta.touched && meta.error)}
+                  aria-describedby={INVALID_TEXT}
                   autoFocus
                   {...field}
                   className={inputClassNames}
@@ -51,7 +56,11 @@ function TasksForm () {
           </Field>
 
           <ErrorMessage name='taskText'>
-            {msg => <div className={styles.invalidMsg}>{msg}</div>}
+            {msg => (
+              <div id={INVALID_TEXT} className={styles.invalidMsg}>
+                {msg}
+              </div>
+            )}
           </ErrorMessage>
         </label>
 
@@ -65,6 +74,8 @@ function TasksForm () {
               return (
                 <input
                   type='datetime-local'
+                  aria-invalid={!!(meta.touched && meta.error)}
+                  aria-describedby={INVALID_DEADLINE}
                   {...field}
                   className={inputClassNames}
                 />
@@ -73,11 +84,19 @@ function TasksForm () {
           </Field>
 
           <ErrorMessage name='taskDeadline'>
-            {msg => <div className={styles.invalidMsg}>{msg}</div>}
+            {msg => (
+              <div id={INVALID_DEADLINE} className={styles.invalidMsg}>
+                {msg}
+              </div>
+            )}
           </ErrorMessage>
         </label>
 
-        <button type='submit' className={styles.submitBtn}>
+        <button
+          type='submit'
+          className={styles.submitBtn}
+          aria-label='Add task'
+        >
           Add
         </button>
       </Form>

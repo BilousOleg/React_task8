@@ -58,6 +58,7 @@ function TasksListItem ({ id, text, isDone, deadline }) {
 
           <button
             className={styles.deleteBtn}
+            aria-label={`Delete task '${text}'`}
             onClick={() => {
               dispatch(deleteTask(id));
             }}

@@ -9,8 +9,8 @@ function TodoWidget () {
       <section>
         <TasksForm />
       </section>
-      <h3 className={styles.tasksHeading}>Tasks List</h3>
       <section className={styles.listSection}>
+        <h3 className={styles.tasksHeading}>Tasks List</h3>
         <TasksList />
       </section>
     </article>

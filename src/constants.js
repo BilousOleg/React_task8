@@ -2,7 +2,10 @@ const CONSTANTS = {
   FORM: {
     MAX_LENGTH: 150,
     MIN_LENGTH: 2,
-    INITIAL_VALUE: '',
+    ERROR_IDS: {
+      INVALID_TEXT: 'invalid-text',
+      INVALID_DEADLINE: 'invalid-deadline',
+    },
   },
   API: {
     COORDINATES: {
